@@ -98,7 +98,7 @@ window.webpackChunkdiscord_app.push([[Math.random()],{},(req)=>{
 There are many snippets out there, i will include some tomorrow, but for now, if you want to further analyze the webpack script source code easily (the discord app one is minified), use [Discord-Datamining](https://github.com/Discord-Datamining/Discord-Datamining)
 
 # some snippets i have
-1. clyde saying the funny
+## 1. clyde saying the funny
 ```js
 let amongus;
 window.webpackChunkdiscord_app.push([[Math.random()],{},(a)=>{amongus=a}])
@@ -106,7 +106,7 @@ Object.values(amongus.c).find(x=>x.exports?.Z?.sendBotMessage).exports.Z.sendBot
 ```
 ![clyd](https://host.paderos-neko.store/raw/Discord_8Ngm4uNAwZ_iOUqWTjpFREopgV.png)
 
-2. (somewhat broken idk why) tells you if you have embed failure (no EMBED_LINKS permission)
+## 2. (somewhat broken idk why) tells you if you have embed failure (no EMBED_LINKS permission)
 ```js
 const pair = window.location.pathname.slice(10).split('/')
 let amongus;
@@ -122,8 +122,36 @@ for(const role of member.roles){
     if(has(guild.roles[role].permissions,perms.ADMINISTRATOR)){
         piss = true
     } else if(has(guild.roles[role].permissions,perms.EMBED_LINKS)){
-        if(Object.keys(channel.permissionOverwrites).includes(role) && !has(channel.permissionOverwrites[role].deny,perms.EMBED_LINKS)) piss = true
+        if(Object.keys(channel.permissionOverwrites).includes(role)) {
+          if(!has(channel.permissionOverwrites[role].deny,perms.EMBED_LINKS)) piss = true
+        } else {
+          piss = true
+        }
     } else if(Object.keys(channel.permissionOverwrites).includes(role) && has(channel.permissionOverwrites[role].allow,perms.EMBED_LINKS)) piss = true
 }
 console.log(piss ? 'you dont have embed failure big W' : 'you have embed failure big LLLLLLLL')
+```
+
+## 3. message spam (be careful with this)
+```js
+const repeat = 20;
+const message = 'amongus'
+
+let amongus;
+window.webpackChunkdiscord_app.push([[Math.random()],{},(req)=>{amongus = Object.values(req.c)}])
+const send = amongus.find(x=>x.exports?.Z?.sendMessage).exports.Z.sendMessage
+const id = window.location.pathname.slice(10).split('/')[1]
+for(let i = 0; i < repeat; i++) send(id,{content:message,invalidEmojis:[],tts:false,validNonShortcutEmojis:[]})
+```
+![20 amongus messages](https://host.paderos-neko.store/raw/Discord_eQlwEPExLB_aCWXausOdZHtSDB.png)
+
+## 4. create quick friend invite link
+```js
+window.webpackChunkdiscord_app.push([[Math.random()],{},async (r)=>{DiscordNative.clipboard.copy(`https://discord.gg/${(await Object.values(r.c).find(x=>x.exports?.Z?.createFriendInvite).exports.Z.createFriendInvite()).code}`)}])
+```
+![invite](https://host.paderos-neko.store/raw/Discord_orvauLKdz3_mvtIEcsvZaQiMKX.png)
+
+## 5. stop showing "\*yourself\* is typing..."
+```js
+window.webpackChunkdiscord_app.push([[Math.random()],{},r=>{Object.values(r.c).find(x=>x.exports?.Z?.startTyping).exports.Z.startTyping=()=>{}}])
 ```
