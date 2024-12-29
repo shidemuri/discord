@@ -106,29 +106,13 @@ Object.values(amongus.c).find(x=>x.exports?.Z?.sendBotMessage).exports.Z.sendBot
 ```
 ![clyd](https://host.paderos-neko.store/raw/Discord_8Ngm4uNAwZ_iOUqWTjpFREopgV.png)
 
-## 2. (somewhat broken idk why) tells you if you have embed failure (no EMBED_LINKS permission)
+## 2. tells you if you have embed failure (no EMBED_LINKS permission)
 ```js
-const pair = window.location.pathname.slice(10).split('/')
 let amongus;
-window.webpackChunkdiscord_app.push([[Math.random()],{},(a)=>{amongus=a}])
-let uid = Object.values(amongus.c).find(x=>x.exports?.Z?.getCurrentUser).exports.Z.getCurrentUser().id
-let member = Object.values(amongus.c).find(x=>x.exports?.ZP?.__proto__?.getSelfMember).exports.ZP.__proto__.getMembers(pair[0]).find(x=>x.userId==uid)
-let guild = Object.values(amongus.c).find(x=>x.exports?.Z?.getGuilds).exports.Z.__proto__.getGuild(pair[0])
-let channel = Object.values(amongus.c).find(x=>x.exports?.Z?.getChannel).exports.Z.getChannel(pair[1])
-let has = Object.values(amongus.c).find(x=>x.exports?.Z?.asUintN).exports.Z.has
-const perms = Object.values(amongus.c).find(x=>x.exports?.Plq).exports.Plq
-let piss = false
-for(const role of member.roles){
-    if(has(guild.roles[role].permissions,perms.ADMINISTRATOR)){
-        piss = true
-    } else if(has(guild.roles[role].permissions,perms.EMBED_LINKS)){
-        if(Object.keys(channel.permissionOverwrites).includes(role)) {
-          if(!has(channel.permissionOverwrites[role].deny,perms.EMBED_LINKS)) piss = true
-        } else {
-          piss = true
-        }
-    } else if(Object.keys(channel.permissionOverwrites).includes(role) && has(channel.permissionOverwrites[role].allow,perms.EMBED_LINKS)) piss = true
-}
+window.webpackChunkdiscord_app.push([[Math.random()],{},(a)=>{amongus=a}]);
+const perms = Object.values(amongus.c).find(x=>x.exports?.Plq).exports.Plq;
+const channel = Object.values(amongus.c).find(x=>x.exports?.Z?.getDMChannelFromUserId).exports.Z.getChannel(window.location.pathname.match(/\d+/g)[1])
+const piss = Object.values(amongus.c).find(x=>x.exports?.Z?.canAccessGuildSettings).exports.Z.can(perms.EMBED_LINKS,channel)
 console.log(piss ? 'you dont have embed failure big W' : 'you have embed failure big LLLLLLLL')
 ```
 
